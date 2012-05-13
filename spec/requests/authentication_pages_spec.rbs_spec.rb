@@ -73,10 +73,6 @@ describe "Authentication" do
           it { should have_selector('title', text: "Sign in")}
         end
 
-        describe "visit index" do
-          before {visit users_path}
-          it { should have_selector("title", text: "Sign in")}
-        end
         describe "submit update action" do
           before {put user_path(user)}
           specify { response.should redirect_to(signin_path) }

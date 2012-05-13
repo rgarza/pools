@@ -3,20 +3,7 @@ require 'spec_helper'
 describe "UserPages" do
   subject {page}
   
-  describe "index" do
-    before do
-      sign_in FactoryGirl.create(:user)
-      FactoryGirl.create(:user, name: "bon", email: "bob@bob.com")
-      FactoryGirl.create(:user, name: "bona", email: "boba@bob.com")
-      visit users_path
-    end
-    it { should have_selector('title', text: "All users")}
-    it "Should list users" do
-      User.all.each do |u|
-        page.should have_selector('li', text: u.name)
-      end
-    end
-  end
+  
   describe "signup" do
     before { visit signup_path }
     let (:submit) {"Create my account"}
