@@ -11,20 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120515003725) do
+ActiveRecord::Schema.define(:version => 20120525031108) do
 
   create_table "tournaments", :force => true do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "user_id"
   end
 
+  add_index "tournaments", ["name"], :name => "index_tournaments_on_name", :unique => true
+
   create_table "users", :force => true do |t|
-    t.string   "email",            :null => false
-    t.string   "name",            :null => false
-    t.string   "password",            :null => false
-    t.string   "password_confirmation",            :null => false
+    t.string   "email"
+    t.string   "name"
+    t.string   "password"
+    t.string   "password_confirmation"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
     t.string   "password_digest"
