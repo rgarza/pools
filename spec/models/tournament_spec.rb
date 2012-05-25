@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Tournament do
-  before { @tournament = Tournament.new(name: "clausura 2012", description: "Torneo de clausura 2012") }
+  let(:user) { FactoryGirl.create(:user)}
+  before { @tournament = user.tournaments.build(name: "clausura 2012", description: "Torneo de clausura 2012") }
   subject { @tournament }
 
   it { should respond_to(:name) }
